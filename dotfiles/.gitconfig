@@ -1,0 +1,53 @@
+[user]
+    name="Til Boerner"
+    email="tilman.boerner@gmx.net"
+
+[alias]
+    co = checkout
+    dt = difftool
+    cm = commit
+    cma = "commit -a"
+    s = status
+    ps = push
+    p = pull
+    a = add
+    aa = "add --all"
+    ai = "add --interactive"
+    ap = "add --patch"
+    b = branch
+    f = fetch
+    rb = rebase
+
+    # log output:
+    #
+    # cf http://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
+    lg1 = log -n 100 --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white) - %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    lg2 = log -n 100 --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)– %an%C(reset)' --abbrev-commit
+    lg = !"git lg1"
+    # http://stackoverflow.com/a/13958084 :
+    bdiff = log --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white) - %an%C(reset)%C(bold yellow)%d%C(reset)' --date=relative --cherry-pick --no-merges --right-only
+
+
+[credential]
+helper = cache --timeout=900
+
+[diff]
+    tool="diffuse"
+[difftool]
+    prompt=false
+[difftool "extDiff"]
+    cmd="~/bin/extDiff.sh"
+
+[merge]
+    tool="extMerge"
+[mergetool]
+    prompt=false
+[mergetool "extMerge"]
+    cmd = ~/bin/extMerge.sh "\"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+
+[push]
+    default = simple
+
+[color]
+    ui = true
+

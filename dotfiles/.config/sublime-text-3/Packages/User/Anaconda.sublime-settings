@@ -1,0 +1,80 @@
+{
+    "anaconda_tooltip_theme": "dark",  // possible options "light" or "dark"
+    "enable_signatures_tooltip": true,  // if "display_signatures" is true
+    "enable_docstrings_tooltip": true,
+    "merge_signatures_and_doc": true,
+
+    /*
+        Set those as true if you don't want Sublime Text regular completions
+    */
+    "suppress_word_completions": false,
+    "suppress_explicit_completions": false,
+
+    "complete_parameters": false,
+    "complete_all_parameters": false,   // complete optional, or only reqired parameters
+
+    "display_signatures": true,
+
+    "auto_python_builder_enabled": false,
+
+    "anaconda_linting": false,
+    "anaconda_linting_behaviour": "always", // "always" "load-save" "save-only"
+    "anaconda_linter_delay": 0.5,
+    "anaconda_linter_mark_style": "none",  // "outline", "fill", "none"
+    "anaconda_linter_show_errors_on_save": true,
+
+    "pep8": true,
+    "pep8_ignore":
+    [
+    ],
+
+
+    // Set this to true to turn pep257 (docstring) checking on
+    "pep257": false,
+    "pep257_ignore":
+    [
+        "D209"
+    ],
+
+    /*
+        You can ignore some of the "undefined name xxx"
+        errors (comes in handy if you work with post-processors, globals/builtins available only at runtime, etc.).
+        You can control what names will be ignored with the user setting "pyflakes_ignore".
+
+        Example:
+
+        "pyflakes_ignore":
+            [
+                "some_custom_builtin_o_mine",
+                "A_GLOBAL_CONSTANT"
+            ],
+    */
+    "pyflakes_ignore":
+    [
+    ],
+
+    /*
+        Now is possible to ignore specific error types adding them on this
+        list, (just uncomment them)
+    */
+    "pyflakes_explicit_ignore":
+    [
+        // "Redefined",
+        // "UnusedImport",
+        // "UndefinedName",
+        // "UndefinedLocal",
+        // "UnusedVariable,",
+        // "UndefinedExport",
+        // "DuplicateArgument",
+        // "RedefinedWhileUnused"
+    ],
+
+    /*
+        Set the following option to true if you want that anaconda check
+        the validity of your imports when the linting process is fired.
+
+        WARNING: take into account that anaconda compiles and import the
+        modules in the JsonServer memory segment in order to check this
+    */
+    "validate_imports": true,
+}

@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+"""Print the name of the working directory with long dirnames shortened."""
+
+import os
+import sys
+
+cwd = os.getcwd()
+home = os.path.expanduser('~')
+
+if cwd.startswith(home):
+#    cwd = cwd.replace(home, '~', 1)
+    cwd = '~' + cwd[len(home):]
+
+def short(s):
+    if len(s) > 4:
+        return s[0] + '...'
+    return s
+
+dirs = cwd.split('/')
+newdirs = '/'.join(list(short(d) for d in dirs[:-2]) + dirs[-2:])
+
+print(newdirs)
+

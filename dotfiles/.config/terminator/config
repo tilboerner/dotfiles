@@ -1,0 +1,82 @@
+[global_config]
+  enabled_plugins = APTURLHandler, LaunchpadCodeURLHandler, LaunchpadBugURLHandler
+  focus = mouse
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child0]]]
+      order = 0
+      parent = ""
+      position = 1985:24
+      size = 642, 427
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 321
+      type = HPaned
+    [[[child3]]]
+      order = 1
+      parent = child1
+      position = 213
+      type = VPaned
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+    [[[terminal4]]]
+      order = 0
+      parent = child3
+      profile = default
+      type = Terminal
+    [[[terminal5]]]
+      order = 1
+      parent = child3
+      profile = default
+      type = Terminal
+  [[default2]]
+    [[[child0]]]
+      order = 0
+      parent = ""
+      position = 1920:21
+      size = 1080, 1899
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 962
+      type = VPaned
+    [[[child3]]]
+      order = 1
+      parent = child1
+      position = 540
+      type = HPaned
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+    [[[terminal4]]]
+      order = 0
+      parent = child3
+      profile = default
+      type = Terminal
+    [[[terminal5]]]
+      order = 1
+      parent = child3
+      profile = default
+      type = Terminal
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.86
+    background_image = None
+    background_type = transparent
+    copy_on_selection = True
+    cursor_color = "#abaaaa"
+    font = Inconsolata Medium 11
+    scroll_on_output = False
+    scrollback_infinite = True
+    scrollback_lines = 5000
+    use_system_font = False
