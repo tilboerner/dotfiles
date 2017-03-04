@@ -1,9 +1,11 @@
 {
-    "rulers":
-    [
-        100
-    ],
-    "tab_size": 4,
-    "translate_tabs_to_spaces": true,
-    "trim_trailing_white_space_on_save": true
+	"highlight_line": true,
+	"ensure_newline_at_eof_on_save": true,
+	"rulers": [79],
+	"tab_size": 4,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"use_tab_stops": true,
+	// pycharm style:
+	"shift_tab_unindent": false,
 }

@@ -6,18 +6,20 @@
         "error_color": "D02000",
         "gutter_theme": "Packages/SublimeLinter/gutter-themes/Default/Default.gutter-theme",
         "gutter_theme_excludes": [],
-        "lint_mode": "load/save",
+        "lint_mode": "background",
         "linters": {
             "flake8": {
                 "@disable": false,
                 "args": [],
                 "builtins": "",
                 "excludes": [],
+                "executable": "",
                 "ignore": "",
                 "jobs": "1",
-                "max-complexity": 7,
-                "max-line-length": 79,
-                "select": ""
+                "max-complexity": 10,
+                "max-line-length": null,
+                "select": "",
+                "show-code": true
             },
             "pep257": {
                 "@disable": false,
@@ -50,7 +52,7 @@
             }
         },
         "mark_style": "outline",
-        "no_column_highlights_line": false,
+        "no_column_highlights_line": true,
         "passive_warnings": false,
         "paths": {
             "linux": [],

@@ -35,15 +35,12 @@ helper = cache --timeout=900
     tool="diffuse"
 [difftool]
     prompt=false
-[difftool "extDiff"]
-    cmd="~/bin/extDiff.sh"
 
 [merge]
-    tool="extMerge"
+    tool="diffuse"
+    cmd='diffuse "$LOCAL" "$MERGED" "$REMOTE"'
 [mergetool]
     prompt=false
-[mergetool "extMerge"]
-    cmd = ~/bin/extMerge.sh "\"$LOCAL\" \"$MERGED\" \"$REMOTE\""
 
 [push]
     default = simple
