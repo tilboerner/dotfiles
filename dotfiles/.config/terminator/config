@@ -5,72 +5,26 @@
 [layouts]
   [[default]]
     [[[child0]]]
+      fullscreen = False
+      last_active_term = cf3109e7-f6ac-4716-a2ea-827edc59800c
+      last_active_window = True
+      maximised = False
       order = 0
       parent = ""
-      position = 1985:24
-      size = 642, 427
+      position = 0:18
+      size = 1916, 2098
+      title = /bin/bash
       type = Window
-    [[[child1]]]
-      order = 0
-      parent = child0
-      position = 321
-      type = HPaned
-    [[[child3]]]
-      order = 1
-      parent = child1
-      position = 213
-      type = VPaned
     [[[terminal2]]]
       order = 0
-      parent = child1
-      profile = default
-      type = Terminal
-    [[[terminal4]]]
-      order = 0
-      parent = child3
-      profile = default
-      type = Terminal
-    [[[terminal5]]]
-      order = 1
-      parent = child3
-      profile = default
-      type = Terminal
-  [[default2]]
-    [[[child0]]]
-      order = 0
-      parent = ""
-      position = 1920:21
-      size = 1080, 1899
-      type = Window
-    [[[child1]]]
-      order = 0
       parent = child0
-      position = 962
-      type = VPaned
-    [[[child3]]]
-      order = 1
-      parent = child1
-      position = 540
-      type = HPaned
-    [[[terminal2]]]
-      order = 0
-      parent = child1
       profile = default
       type = Terminal
-    [[[terminal4]]]
-      order = 0
-      parent = child3
-      profile = default
-      type = Terminal
-    [[[terminal5]]]
-      order = 1
-      parent = child3
-      profile = default
-      type = Terminal
+      uuid = cf3109e7-f6ac-4716-a2ea-827edc59800c
 [plugins]
 [profiles]
   [[default]]
-    background_darkness = 0.86
+    background_darkness = 0.7
     background_image = None
     background_type = transparent
     copy_on_selection = True
