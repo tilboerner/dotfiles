@@ -38,7 +38,7 @@ function symlink() {
 	ORIGINAL="$1"
 	LINK="$2"
 	echo  link "${LINK}" '-->' "${SRC}"
-	# ln -s "${SRC}" "${LINK}"
+	ln -s "${SRC}" "${LINK}"
 }
 
 function tmpdir() {
@@ -144,8 +144,10 @@ for FILE in `find -type f | sort`; do
 				;;
 		esac
 	fi
+	echo "$TARGET_DIR $LINK"
 	if [ ! -d "${TARGET_DIR}" ]; then
 		echo "mkdir -p \"${TARGET_DIR}\""
+		mkdir -p "${TARGET_DIR}"
 	fi
 
 	symlink "${SRC}" "${LINK}"
