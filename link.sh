@@ -30,6 +30,9 @@ function error() {
 }
 
 function samefiles() {
+    if [ $(realpath "$1") = $(realpath "$2") ]; then
+        return 0
+    fi
 	cmp "$1" "$2" > /dev/null
 	return $?
 }
@@ -101,6 +104,10 @@ for FILE in `find -type f | sort`; do
 		continue
 	fi
 	if [ -e "${LINK}" ]; then
+        if samefiles "${SRC}" "${LINK}"; then
+            echo "Up to date: ${FILE}"
+            continue
+        fi
 		echo
 		echo -n "${LINK} exists. [s]kip, [m]erge, [!r]emove, [h]elp, [q]uit? "
 		read answer
