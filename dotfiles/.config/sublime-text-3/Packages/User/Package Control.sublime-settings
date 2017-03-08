@@ -1,0 +1,23 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"Emmet",
+		"Git",
+		"GitGutter",
+		"LoremIpsum",
+		"Package Control",
+		"Python 3",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"SublimeLinter-flake8",
+		"SublimeREPL",
+		"Theme - Spacegray",
+		"Tomorrow Color Schemes",
+		"Virtualenv"
+	]
+}
