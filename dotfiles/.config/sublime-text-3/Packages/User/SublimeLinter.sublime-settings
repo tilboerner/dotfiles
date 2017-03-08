@@ -1,7 +1,7 @@
 {
     "user": {
         "@disable": false,
-        "debug": true,
+        "debug": false,
         "delay": 0.5,
         "error_color": "D02000",
         "gutter_theme": "Packages/SublimeLinter/gutter-themes/Default/Default.gutter-theme",

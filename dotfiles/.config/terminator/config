@@ -4,23 +4,12 @@
 [keybindings]
 [layouts]
   [[default]]
-    [[[child0]]]
-      fullscreen = False
-      last_active_term = cf3109e7-f6ac-4716-a2ea-827edc59800c
-      last_active_window = True
-      maximised = False
-      order = 0
-      parent = ""
-      position = 0:18
-      size = 1916, 2098
-      title = /bin/bash
-      type = Window
-    [[[terminal2]]]
-      order = 0
-      parent = child0
-      profile = default
+    [[[child1]]]
+      parent = window0
       type = Terminal
-      uuid = cf3109e7-f6ac-4716-a2ea-827edc59800c
+    [[[window0]]]
+      parent = ""
+      type = Window
 [plugins]
 [profiles]
   [[default]]

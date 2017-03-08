@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/User/SublimeLinter/Slush & Poppies (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/base16-ocean.dark (SL).tmTheme",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Inconsolata",
 	"font_size": 11,
@@ -12,7 +12,12 @@
 	[
 		80
 	],
+	"spacegray_fileicons": false,
+	"spacegray_tabs_auto_width": true,
+	"spacegray_tabs_font_normal": true,
+	"spacegray_tabs_normal": true,
 	"tab_size": 4,
+	"theme": "Spacegray.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true
 }
