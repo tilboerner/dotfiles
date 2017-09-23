@@ -18,18 +18,12 @@ SHRINK_AT_PART_LENGTH = 4
 PART_MIN_LENGTH = 2
 
 
-def shorten(path, *, maxlen=SHRINK_AT_TOTAL_LENGTH):
+def shorten(path):
     path = pathlib.Path(path)
-    if maxlen is not None and maxlen <= 0:
-        maxlen = len(str(path))
-    try:
-        return os.path.join(*(_shorten_parts(path, maxlen=maxlen)))
-    except Exception as error:
-        log.exception('')
-        return path
+    return os.path.join(*(_shorten_parts(path)))
 
 
-def _shorten_parts(path, *, maxlen=20):
+def _shorten_parts(path):
     samepath = pathlib.Path('.')
     paths = list(p for p in reversed(path.parents) if p != samepath) + [path]
     split = round(len(paths) / 2 + 0.25)  # index after middle
@@ -45,9 +39,8 @@ def _shorten_parts(path, *, maxlen=20):
         if i < 2:
             short = p.name or p.anchor  # don't shorten first and last part
         else:
-            short = _shorten_name(p, maxlen=maxlen)
+            short = _shorten_name(p)
         # _debug(f'{maxlen:02}', repr(str(p)), repr(short))
-        maxlen = maxlen and max(0, maxlen - len(short))
         if i % 2 == 0:
             yield short
         else:
@@ -55,12 +48,8 @@ def _shorten_parts(path, *, maxlen=20):
     yield from reversed(right)
 
 
-def _shorten_name(path, *, maxlen=None):
-    assert maxlen is None or maxlen >= 0
-    if maxlen is None:
-        maxlen = SHRINK_AT_PART_LENGTH
-    elif SHRINK_AT_PART_LENGTH is not None:
-        maxlen = max(maxlen, SHRINK_AT_PART_LENGTH)
+def _shorten_name(path):
+    maxlen = SHRINK_AT_PART_LENGTH
     anchor, name = path.anchor, path.name
     namelen = len(name)
     if anchor and not name and path.parent == path:  # root path
@@ -72,8 +61,8 @@ def _shorten_name(path, *, maxlen=None):
 
 
 def _abbrev(name, maxlen):
-    _debug('abbrev', name)
     available = max(PART_MIN_LENGTH, maxlen - len(ABBREV))
+    _debug('abbrev', name=name, maxlen=maxlen)
     right_count = int(available / 2)
     left_count = available - right_count
     return name[:left_count] + ABBREV + name[len(name) - right_count:]
@@ -81,14 +70,15 @@ def _abbrev(name, maxlen):
 
 def _find_unique_prefix(path, maxlen):
     name = path.name
+    namelen = len(name)
+    _debug('unique', name=name, maxlen=maxlen)
     siblings = list(_yield_sibling_names(path))
     assert name not in siblings
     sibling_prefixes = set(chain.from_iterable(
-        _prefixes(s, maxlen=maxlen) for s in siblings
+        _prefixes(s, maxlen=namelen) for s in siblings
     ))
-    for prefix in _prefixes(name, maxlen=maxlen):
-        _debug(prefix)
-        if len(prefix) + len(ABBREV) >= len(name):
+    for prefix in _prefixes(name):
+        if len(prefix) + len(ABBREV) >= namelen:
             return name
         if prefix not in sibling_prefixes:
             return prefix + ABBREV
@@ -107,12 +97,12 @@ def _yield_sibling_names(path):
             yield entry.name
 
 
-def _prefixes(string, minlen=PART_MIN_LENGTH, maxlen=None):
-    assert minlen >= 0
+def _prefixes(string, minlen=None, maxlen=None):
+    assert minlen is None or minlen >= 0
     strlen = len(string)
-    minlen = min(minlen, strlen)
-    # maxlen = min(SHRINK_AT_PART_LENGTH or strlen, strlen)
-    maxlen = strlen
+    maxlen = maxlen or strlen
+    minlen = minlen or max(1, SHRINK_AT_PART_LENGTH - len(ABBREV))
+    minlen = min(minlen, maxlen)
     return (string[:n] for n in range(minlen, maxlen))
 
 
@@ -128,4 +118,13 @@ if __name__ == '__main__':
     home = os.path.expanduser('~')
     if cwd.startswith(home):
         cwd = '~' + cwd[len(home):]
-    print(shorten(cwd))
+    if len(cwd) > SHRINK_AT_TOTAL_LENGTH:
+        orig = cwd
+        try:
+            cwd = shorten(cwd)
+        except Exception:
+            log.exception('')
+        if DEBUG:
+            cwdlen, origlen = len(cwd), len(orig)
+            cwd = f'{cwd}|{cwdlen}|{cwdlen/origlen:.2}'
+    print(cwd)
