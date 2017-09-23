@@ -8,3 +8,4 @@ alias grep='grep --color=auto'
 alias cls=clear
 alias du='du -h'
 alias doco='docker-compose'
+alias open='xdg-open'
