@@ -25,11 +25,11 @@ esac
 CANONICAL_DOTFILES_DIR="`cd ${DOTFILES_DIR}; pwd -P`"  # /bin/readlink might not exist
 
 
-function error() {
+error () {
 	(>&2 echo $@)
 }
 
-function samefiles() {
+samefiles () {
     if [ $(realpath "$1") = $(realpath "$2") ]; then
         return 0
     fi
@@ -37,21 +37,21 @@ function samefiles() {
 	return $?
 }
 
-function symlink() {
+symlink () {
 	ORIGINAL="$1"
 	LINK="$2"
 	echo  link "${LINK}" '-->' "${SRC}"
 	ln -s "${SRC}" "${LINK}"
 }
 
-function tmpdir() {
+tmpdir () {
 	if [ -z "$TMPDIR" ]; then
 		TMPDIR="`mktemp -d --suffix='-dotfiles'`"
 	fi
 	echo "$TMPDIR"
 }
 
-function merge() {
+merge () {
 	OURS="$1"
 	TARGET="$2"
 
@@ -127,18 +127,18 @@ for FILE in `find -type f | sort`; do
 			h|H|?)
 				cat <<-EOF
 				s   Skip.
-				        Keeps the existing file and moves to the next dotfile.
+				        Keep the existing file and moves to the next dotfile.
 				m   Merge.
-				        Opens an editor of your choice with DOTFILE, EXISTING, EXISTING_COPY,
+				        Open an editor of your choice with DOTFILE, EXISTING, EXISTING_COPY,
 				        giving you the chance to edit the first two. The results will be kept
 				        in the state you leave them.
 				!r  Remove.
-				        Replaces the existing file with a symlink to the dotfile.
-				        Yes, type an '!' before the 'r', so we know you really mean it.
+				        Replace the existing file with a symlink to the dotfile.
+				        Yes, type an '!' before the 'r', to show you really mean it.
 				h   Help
-				        Shows this text and quits.
+				        Show this text and quit.
 				q   Quit
-				        Just quits right then.
+				        Just quit right then.
 				EOF
 				exit
 				;;
