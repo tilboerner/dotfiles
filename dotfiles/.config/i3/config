@@ -34,11 +34,23 @@ font pango:Fira Code 8
 floating_modifier $mod
 
 
+focus_follows_mouse no
+
 # Hotkeys
 bindsym mod1+ctrl+l exec i3lock -def -c 222222 -i $HOME/.Xresources.d/lock
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #decrease sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
+
+bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym XF86AudioStop exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
+bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+
+bindsym Scroll_Lock [class="^Slack$" instance="^slack$"] scratchpad show
+bindsym $mod+Shift+b [class="^Slack$" instance="^slack$"] scratchpad show
+bindsym F12 [class="Terminator" instance="scratch"] exec "ps -fC terminator | grep -q scratch || /usr/bin/terminator --classname=scratchS", scratchpad show
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
@@ -117,7 +129,7 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+0 workspace ♫
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -129,7 +141,10 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+0 move container to workspace ♫
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -170,6 +185,13 @@ bar {
         status_command i3status
         tray_output primary
 }
+
+
+for_window [class="Terminator" instance="scratch"] move scratchpad, sticky enable
+for_window [class="Slack"] move scratchpad, sticky enable
+for_window [class="Slack"] scratchpad show  # Show to actually load and connect to Slack
+for_window [class="Diffuse"] fullscreen enable
+for_window [class="Xviewer"] floating enable  # look at image
 
 # enable alternative kbd layout while capslock is pressed
 exec --no-startup-id /bin/sh ~/bin/kbd_switch.sh
