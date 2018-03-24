@@ -21,6 +21,16 @@
                 "select": "",
                 "show-code": true
             },
+            "mypy": {
+                "@disable": false,
+                "args": [],
+                "cache-dir": "",
+                "config-file": "",
+                "disallow-any": [],
+                "excludes": [],
+                "python-version": "",
+                "strict-optional-whitelist": []
+            },
             "pep257": {
                 "@disable": false,
                 "args": [],
@@ -77,6 +87,11 @@
             "python3": "python"
         },
         "warning_color": "DDB700",
+        "tooltip_fontsize": "1rem",
+        "tooltip_theme": "Packages/SublimeLinter/tooltip-themes/Default/Default.tooltip-theme",
+        "tooltip_theme_excludes": [],
+        "tooltips": false,
+        "use_current_shell_path": false,
         "wrap_find": true
     }
 }
