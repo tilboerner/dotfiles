@@ -52,7 +52,7 @@ bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer
 
 bindsym Scroll_Lock [class="^Slack$" instance="^slack$"] scratchpad show
 bindsym $mod+Shift+b [class="^Slack$" instance="^slack$"] scratchpad show
-bindsym F12 [class="Terminator" window_role="scratch"] exec "ps -fC terminator | grep -q scratch || /usr/bin/terminator --role=scratch", scratchpad show
+bindsym F12 [class="Terminator" window_role="scratch"] exec "xwininfo -root -tree | grep terminator | grep -q i3scratch || /usr/bin/terminator --title=i3scratch --role=scratch", scratchpad show
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
