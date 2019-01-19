@@ -62,6 +62,7 @@ bindsym XF86MonBrightnessDown exec light -U 5
 bindsym Scroll_Lock [class="^Slack$" instance="^slack$"] scratchpad show
 bindsym $mod+Shift+b [class="^Slack$" instance="^slack$"] scratchpad show
 bindsym F12 [class="Terminator" instance="scratch"] exec "ps -fC terminator | grep -q scratch || /usr/bin/terminator --classname=scratchS", scratchpad show
+bindsym shift+Scroll_Lock [class="Signal" instance="signal"] exec "ps -fC signal-desktop | grep -q signal || /usr/local/bin/signal-desktop", scratchpad show
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
@@ -200,6 +201,7 @@ bar {
 
 for_window [class="Terminator" instance="scratch"] move scratchpad, sticky enable
 for_window [class="Slack"] move scratchpad, sticky enable
+for_window [class="Signal"] move scratchpad, sticky enable
 for_window [class="Slack"] scratchpad show  # Show to actually load and connect to Slack
 for_window [class="Diffuse"] fullscreen enable
 for_window [class="Xviewer"] floating enable  # look at image
