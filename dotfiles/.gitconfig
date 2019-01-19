@@ -48,3 +48,5 @@ helper = cache --timeout=900
 [color]
     ui = true
 
+[core]
+	excludesfile = /home/til/.gitignore
