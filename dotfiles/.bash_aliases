@@ -9,3 +9,4 @@ alias cls=clear
 alias du='du -h'
 alias doco='docker-compose'
 alias open='xdg-open'
+alias xclip='xclip -selection c'
