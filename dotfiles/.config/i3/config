@@ -204,6 +204,7 @@ for_window [class="Slack"] move scratchpad, sticky enable
 for_window [class="Signal"] move scratchpad, sticky enable
 for_window [class="Slack"] scratchpad show  # Show to actually load and connect to Slack
 for_window [class="Diffuse"] fullscreen enable
+for_window [class="Gitg"] fullscreen enable
 for_window [class="Xviewer"] floating enable  # look at image
 
 # enable alternative kbd layout while capslock is pressed
