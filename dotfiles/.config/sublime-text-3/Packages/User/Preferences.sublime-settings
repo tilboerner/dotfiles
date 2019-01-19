@@ -2,6 +2,10 @@
 	"color_scheme": "Packages/User/SublimeLinter/base16-ocean.dark (SL).tmTheme",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Inconsolata",
+	"font_options":
+	[
+		"no_italic"
+	],
 	"font_size": 11,
 	"highlight_line": true,
 	"ignored_packages":
