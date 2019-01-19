@@ -209,6 +209,7 @@ for_window [class="Xviewer"] floating enable  # look at image
 
 # enable alternative kbd layout while capslock is pressed
 exec --no-startup-id /bin/sh ~/bin/kbd_switch.sh
+exec --no-startup-id /bin/sh ~/bin/save_dbus_address.sh
 exec --no-startup-id /usr/bin/redshift
 # restore background image
 exec_always --no-startup-id /usr/bin/nitrogen --restore
