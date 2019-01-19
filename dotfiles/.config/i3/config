@@ -35,6 +35,9 @@ floating_modifier $mod
 
 
 focus_follows_mouse no
+# focus_on_window_activation smart|urgent|focus|none
+# https://youtrack.jetbrains.com/issue/IDEA-188824
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 # Hotkeys
 bindsym mod1+ctrl+l exec i3lock -def -c 222222 -i $HOME/.Xresources.d/lock
