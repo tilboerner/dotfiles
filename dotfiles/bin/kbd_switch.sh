@@ -2,3 +2,4 @@
 setxkbmap -layout us,de
 setxkbmap -option 'grp:caps_switch'
 setxkbmap -option 'grp_led:caps'
+setxkbmap -option 'compose:ralt'
